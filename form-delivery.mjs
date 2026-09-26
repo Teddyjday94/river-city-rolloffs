@@ -1,0 +1,48 @@
+// TEMPORARY TEST DESTINATION — replace only this value with the client's inbox after approval.
+export const FORM_RECIPIENT = 'thomasdbiz26@gmail.com';
+
+export function buildFormSubmission(values) {
+  const text = (value) => String(value ?? '').trim();
+
+  return {
+    endpoint: `https://formsubmit.co/ajax/${FORM_RECIPIENT}`,
+    fields: {
+      _subject: 'River City Roll-Offs rental request',
+      _template: 'table',
+      _captcha: 'false',
+      _honey: text(values._honey),
+      name: text(values.name),
+      phone: text(values.phone),
+      email: text(values.email),
+      parish: text(values.parish),
+      period: text(values.period),
+      date: text(values.date),
+      project: text(values.project)
+    }
+  };
+}
+
+export function interpretFormSubmitResponse(payload) {
+  if (payload?.success === true || payload?.success === 'true') {
+    return 'Thanks! Your rental request was emailed successfully.';
+  }
+
+  throw new Error(payload?.message || 'The email could not be sent. Please call or text River City Roll-Offs.');
+}
+
+export async function sendRentalRequest(values, fetchImpl = fetch) {
+  const submission = buildFormSubmission(values);
+  const body = new FormData();
+  Object.entries(submission.fields).forEach(([name, value]) => body.append(name, value));
+
+  const response = await fetchImpl(submission.endpoint, {
+    method: 'POST',
+    headers: { Accept: 'application/json' },
+    body
+  });
+  const payload = await response.json();
+
+  if (!response.ok) throw new Error(payload?.message || 'The email service is temporarily unavailable.');
+  return interpretFormSubmitResponse(payload);
+}
+
