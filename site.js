@@ -24,17 +24,17 @@ document.querySelectorAll('[data-year]').forEach((node) => {
 
 document.querySelectorAll('[data-rental-form]').forEach((form) => {
   const startDate = form.querySelector('[name="start_date"]');
-  const dueDate = form.querySelector('[name="due_date"]');
+  const endDate = form.querySelector('[name="end_date"]');
 
-  const syncDueDate = () => {
-    if (!startDate || !dueDate) return;
-    dueDate.min = startDate.value;
-    if (startDate.value && dueDate.value && dueDate.value < startDate.value) {
-      dueDate.value = '';
+  const syncEndDate = () => {
+    if (!startDate || !endDate) return;
+    endDate.min = startDate.value;
+    if (startDate.value && endDate.value && endDate.value < startDate.value) {
+      endDate.value = '';
     }
   };
 
-  startDate?.addEventListener('change', syncDueDate);
+  startDate?.addEventListener('change', syncEndDate);
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -61,7 +61,7 @@ document.querySelectorAll('[data-rental-form]').forEach((form) => {
         status.textContent = message;
       }
       form.reset();
-      syncDueDate();
+      syncEndDate();
     } catch (error) {
       if (status) {
         status.classList.add('is-error');
