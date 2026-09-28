@@ -23,6 +23,19 @@ document.querySelectorAll('[data-year]').forEach((node) => {
 });
 
 document.querySelectorAll('[data-rental-form]').forEach((form) => {
+  const startDate = form.querySelector('[name="start_date"]');
+  const dueDate = form.querySelector('[name="due_date"]');
+
+  const syncDueDate = () => {
+    if (!startDate || !dueDate) return;
+    dueDate.min = startDate.value;
+    if (startDate.value && dueDate.value && dueDate.value < startDate.value) {
+      dueDate.value = '';
+    }
+  };
+
+  startDate?.addEventListener('change', syncDueDate);
+
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     if (!form.reportValidity()) return;
@@ -48,6 +61,7 @@ document.querySelectorAll('[data-rental-form]').forEach((form) => {
         status.textContent = message;
       }
       form.reset();
+      syncDueDate();
     } catch (error) {
       if (status) {
         status.classList.add('is-error');
