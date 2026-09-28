@@ -7,7 +7,7 @@ export function buildFormSubmission(values) {
   return {
     endpoint: `https://formsubmit.co/ajax/${FORM_RECIPIENT}`,
     fields: {
-      _subject: 'River City Roll-Offs rental request',
+      _subject: 'River City Rolloffs rental request',
       _template: 'table',
       _captcha: 'false',
       _honey: text(values._honey),
@@ -27,7 +27,7 @@ export function interpretFormSubmitResponse(payload) {
     return 'Thanks! Your rental request was emailed successfully.';
   }
 
-  throw new Error(payload?.message || 'The email could not be sent. Please call or text River City Roll-Offs.');
+  throw new Error(payload?.message || 'The email could not be sent. Please call or text River City Rolloffs.');
 }
 
 export async function sendRentalRequest(values, fetchImpl = fetch) {
