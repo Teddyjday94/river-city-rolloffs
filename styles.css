@@ -97,8 +97,8 @@ h3 { font-size: clamp(1.65rem, 2.6vw, 2.35rem); }
 .service-grid { grid-template-columns: repeat(4,1fr); }
 .service-card { padding: 26px 20px; text-align: center; border-radius: 5px; background: linear-gradient(145deg,#232323,#101010); border: 1px solid #404040; }
 .service-icon { position: relative; display: grid; place-items: center; width: 88px; height: 88px; margin: 0 auto 20px; border: 1px solid rgba(237,23,31,.75); border-radius: 22px; background: radial-gradient(circle at 28% 22%, #353535, #181818 58%, #090909); color: var(--white); box-shadow: 0 14px 32px rgba(0,0,0,.38), inset 0 0 0 5px rgba(255,255,255,.025); transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; }
-.service-icon svg, .benefit-mark svg { width: 38px; height: 38px; fill: none; stroke: currentColor; stroke-width: 2.25; stroke-linecap: round; stroke-linejoin: round; }
-.service-icon svg { width: 56px; height: 56px; color: #fff; stroke-width: 2.8; }
+.benefit-mark svg { width: 38px; height: 38px; fill: none; stroke: currentColor; stroke-width: 2.25; stroke-linecap: round; stroke-linejoin: round; }
+.service-icon img { width: 56px; height: 56px; object-fit: contain; filter: brightness(0) invert(1); }
 .service-card:hover .service-icon { transform: translateY(-4px); border-color: #ff343b; box-shadow: 0 18px 38px rgba(237,23,31,.2), inset 0 0 0 5px rgba(255,255,255,.04); }
 .service-card h3 { font-size: 1.65rem; }
 .service-card p { margin-bottom: 0; color: #d4d4d4; }
