@@ -16,7 +16,7 @@ export function buildFormSubmission(values) {
       email: text(values.email),
       parish: text(values.parish),
       start_date: text(values.start_date),
-      due_date: text(values.due_date),
+      end_date: text(values.end_date),
       project: text(values.project)
     }
   };
