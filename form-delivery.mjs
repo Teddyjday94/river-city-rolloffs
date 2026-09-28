@@ -7,7 +7,7 @@ export function buildFormSubmission(values) {
   return {
     endpoint: `https://formsubmit.co/ajax/${FORM_RECIPIENT}`,
     fields: {
-      _subject: 'River City Rolloffs rental request',
+      _subject: 'River City RollOffs rental request',
       _template: 'table',
       _captcha: 'false',
       _honey: text(values._honey),
@@ -15,8 +15,8 @@ export function buildFormSubmission(values) {
       phone: text(values.phone),
       email: text(values.email),
       parish: text(values.parish),
-      period: text(values.period),
-      date: text(values.date),
+      start_date: text(values.start_date),
+      due_date: text(values.due_date),
       project: text(values.project)
     }
   };
@@ -27,7 +27,7 @@ export function interpretFormSubmitResponse(payload) {
     return 'Thanks! Your rental request was emailed successfully.';
   }
 
-  throw new Error(payload?.message || 'The email could not be sent. Please call or text River City Rolloffs.');
+  throw new Error(payload?.message || 'The email could not be sent. Please call or text River City RollOffs.');
 }
 
 export async function sendRentalRequest(values, fetchImpl = fetch) {
@@ -45,4 +45,3 @@ export async function sendRentalRequest(values, fetchImpl = fetch) {
   if (!response.ok) throw new Error(payload?.message || 'The email service is temporarily unavailable.');
   return interpretFormSubmitResponse(payload);
 }
-
