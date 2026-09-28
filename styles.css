@@ -96,7 +96,9 @@ h3 { font-size: clamp(1.65rem, 2.6vw, 2.35rem); }
 .card-dark { background: var(--steel); color: var(--white); border-color: #3e3e3e; }
 .service-grid { grid-template-columns: repeat(4,1fr); }
 .service-card { padding: 26px 20px; text-align: center; border-radius: 5px; background: linear-gradient(145deg,#232323,#101010); border: 1px solid #404040; }
-.service-icon { display: grid; place-items: center; width: 58px; height: 58px; margin: 0 auto 14px; border-radius: 50%; background: var(--red); font-size: 1.7rem; }
+.service-icon { display: grid; place-items: center; width: 68px; height: 68px; margin: 0 auto 18px; border: 1px solid rgba(255,255,255,.18); border-radius: 18px; background: radial-gradient(circle at 30% 25%, #ff3b42, var(--red) 52%, #a7070c); color: var(--white); box-shadow: 0 12px 28px rgba(237,23,31,.2), inset 0 1px rgba(255,255,255,.2); transform: rotate(-3deg); transition: transform .25s ease, box-shadow .25s ease; }
+.service-icon svg, .benefit-mark svg { width: 38px; height: 38px; fill: none; stroke: currentColor; stroke-width: 2.25; stroke-linecap: round; stroke-linejoin: round; }
+.service-card:hover .service-icon { transform: rotate(0) translateY(-3px); box-shadow: 0 16px 34px rgba(237,23,31,.32), inset 0 1px rgba(255,255,255,.24); }
 .service-card h3 { font-size: 1.65rem; }
 .service-card p { margin-bottom: 0; color: #d4d4d4; }
 
@@ -138,8 +140,10 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(237,23,31,.2
 .contact-points strong { display: block; text-transform: uppercase; font-size: .8rem; }
 
 .benefit-grid { grid-template-columns: repeat(4,1fr); }
-.benefit { display: grid; grid-template-columns: 46px 1fr; gap: 12px; align-items: start; padding: 20px; border: 1px solid #383838; background: #171717; }
-.benefit-mark { color: var(--red); font: 2.2rem/1 var(--display); }
+.benefit { display: grid; grid-template-columns: 52px 1fr; gap: 14px; align-items: start; padding: 20px; border: 1px solid #383838; background: #171717; }
+.benefit-mark { display: grid; place-items: center; width: 52px; height: 52px; border: 1px solid rgba(237,23,31,.5); border-radius: 14px; background: rgba(237,23,31,.1); color: #ff353d; transition: transform .25s ease, background .25s ease, color .25s ease; }
+.benefit-mark svg { width: 29px; height: 29px; stroke-width: 2.4; }
+.benefit:hover .benefit-mark { transform: translateY(-3px) rotate(-2deg); background: var(--red); color: var(--white); }
 .benefit strong { display: block; text-transform: uppercase; }
 .benefit span { color: #c9c9c9; font-size: .9rem; }
 
