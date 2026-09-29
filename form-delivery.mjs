@@ -1,5 +1,5 @@
-// TEMPORARY TEST DESTINATION — replace only this value with the client's inbox after approval.
-export const FORM_RECIPIENT = 'thomasdbiz26@gmail.com';
+// Customer inbox published across the River City RollOffs website.
+export const FORM_RECIPIENT = 'rivercityrolloffs@outlook.com';
 
 export function buildFormSubmission(values) {
   const text = (value) => String(value ?? '').trim();
