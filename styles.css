@@ -275,7 +275,7 @@ input:focus, select:focus, textarea:focus { outline: 3px solid rgba(237,23,31,.2
 .gallery a:nth-child(2) { grid-column: span 4; min-height: 310px; }
 .gallery a:nth-child(3) { grid-column: span 3; min-height: 310px; }
 .gallery img { position: absolute; inset: 0; height: 100%; object-fit: cover; }
-.gallery a::after { content: "VIEW PHOTO  ↗"; position: absolute; right: 12px; bottom: 12px; z-index: 1; padding: 7px 10px; border-radius: 3px; background: rgba(9,9,9,.84); color: #fff; font-size: .7rem; font-weight: 900; letter-spacing: .12em; }
+.gallery a::after { content: "VIEW PHOTO"; position: absolute; right: 12px; bottom: 12px; z-index: 1; padding: 7px 10px; border-radius: 3px; background: rgba(9,9,9,.84); color: #fff; font-size: .7rem; font-weight: 900; letter-spacing: .12em; }
 .gallery a:hover img, .gallery a:focus-visible img { transform: scale(1.035); }
 
 .motion-ready .motion-item { transform: translateY(16px); transition-duration: .5s; }
