@@ -1,15 +1,9 @@
-// Customer inbox published across the River City RollOffs website.
-export const FORM_RECIPIENT = 'rivercityrolloffs@outlook.com';
-
 export function buildFormSubmission(values) {
   const text = (value) => String(value ?? '').trim();
 
   return {
-    endpoint: `https://formsubmit.co/ajax/${FORM_RECIPIENT}`,
+    endpoint: '/api/contact',
     fields: {
-      _subject: 'River City RollOffs rental request',
-      _template: 'table',
-      _captcha: 'false',
       _honey: text(values._honey),
       name: text(values.name),
       phone: text(values.phone),
@@ -32,13 +26,14 @@ export function interpretFormSubmitResponse(payload) {
 
 export async function sendRentalRequest(values, fetchImpl = fetch) {
   const submission = buildFormSubmission(values);
-  const body = new FormData();
-  Object.entries(submission.fields).forEach(([name, value]) => body.append(name, value));
 
   const response = await fetchImpl(submission.endpoint, {
     method: 'POST',
-    headers: { Accept: 'application/json' },
-    body
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(submission.fields)
   });
   const payload = await response.json();
 
