@@ -23,7 +23,7 @@ test('rental requests are submitted to the same-domain email API', () => {
     ...requestValues
   });
 
-  assert.equal(submission.endpoint, '/api/contact');
+  assert.equal(submission.endpoint, '/api/contact/');
 });
 
 test('rental request fields are normalized for the email delivery service', () => {
@@ -62,7 +62,7 @@ test('rental requests are posted as JSON to the email API', async () => {
 
   await sendRentalRequest(requestValues, fetchImpl);
 
-  assert.equal(captured.url, '/api/contact');
+  assert.equal(captured.url, '/api/contact/');
   assert.deepEqual(captured.options.headers, {
     Accept: 'application/json',
     'Content-Type': 'application/json'

@@ -2,7 +2,7 @@ export function buildFormSubmission(values) {
   const text = (value) => String(value ?? '').trim();
 
   return {
-    endpoint: '/api/contact',
+    endpoint: '/api/contact/',
     fields: {
       _honey: text(values._honey),
       name: text(values.name),
